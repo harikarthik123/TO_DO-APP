@@ -62,6 +62,7 @@ const Auth = ({ initialIsLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          autocomplete={isLogin ? "current-password" : "new-password"}
         />
         {!isLogin && (
           <input

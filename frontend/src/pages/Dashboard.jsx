@@ -18,13 +18,13 @@ export default function Dashboard({ toggleTheme, currentTheme }) {
 
   const fetchTodos = async () => {
     try {
-      const response = await fetch('https://to-do-app-7cw4.onrender.com/api/todos', {
-        headers: {
-          'x-auth-token': localStorage.getItem('token'),
-        },
-      });
-      const data = await response.json();
-      setTodos(data);
+      const token = localStorage.getItem('token');
+      if (!token) {
+        // Handle case where no token is found, e.g., redirect to login
+        return;
+      }
+      const response = await getTodos(token);
+      setTodos(response.data);
     } catch (err) {
       console.error(err);
     }
