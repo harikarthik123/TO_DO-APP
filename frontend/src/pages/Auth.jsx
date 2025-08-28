@@ -37,7 +37,7 @@ const Auth = ({ initialIsLogin }) => {
         alert('Registration successful! Please login.');
         setIsLogin(true);
       } else {
-        alert('Registration failed. Username or email might already be in use.');
+        alert(response.data.message || 'Registration failed. Please try again.');
       }
     } catch (error) {
       alert('An error occurred during registration.');
