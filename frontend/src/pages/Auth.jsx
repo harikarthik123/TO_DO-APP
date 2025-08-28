@@ -32,7 +32,7 @@ const Auth = ({ initialIsLogin }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await registerUser({ email, password, username });
+      const response = await registerUser({ email, password, name: username });
       if (response.data.success) {
         alert('Registration successful! Please login.');
         setIsLogin(true);
@@ -55,6 +55,7 @@ const Auth = ({ initialIsLogin }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          autocomplete="email"
         />
         <input
           type="password"
