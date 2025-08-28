@@ -18,9 +18,15 @@ export default function Dashboard({ toggleTheme, currentTheme }) {
 
   const fetchTodos = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const storedUser = localStorage.getItem('user');
+      if (!storedUser) {
+        // Handle case where no user data is found, e.g., redirect to login
+        return;
+      }
+      const userData = JSON.parse(storedUser);
+      const token = userData.token;
       if (!token) {
-        // Handle case where no token is found, e.g., redirect to login
+        // Handle case where no token is found in user data, e.g., redirect to login
         return;
       }
       const response = await getTodos(token);
