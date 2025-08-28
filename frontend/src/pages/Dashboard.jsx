@@ -18,7 +18,12 @@ export default function Dashboard({ toggleTheme, currentTheme }) {
 
   const fetchTodos = async () => {
     try {
-      const { data } = await getTodos(user.token);
+      const response = await fetch('https://to-do-app-7cw4.onrender.com/api/todos', {
+        headers: {
+          'x-auth-token': localStorage.getItem('token'),
+        },
+      });
+      const data = await response.json();
       setTodos(data);
     } catch (err) {
       console.error(err);
