@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://to-do-app-7cw4.onrender.com",
+  baseURL: "https://to-do-app-7cw4.onrender.com/api",
 });
 
 export const registerUser = (data) => API.post("/auth/register", data);
